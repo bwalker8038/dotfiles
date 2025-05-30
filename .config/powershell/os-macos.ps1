@@ -24,20 +24,6 @@ if (Test-Path $wasmerScript) {
     . $wasmerScript
 }
 
-# NVM
-$nvmScript = "$HOME/.nvm/nvm.sh"
-if (Test-Path $nvmScript) {
-    . $nvmScript
-}
-
-# Conda
-$condaScript = "/Users/$env:USER/miniconda3/etc/profile.d/conda.sh"
-if (Test-Path $condaScript) {
-    . $condaScript
-} elseif (Test-Path "/Users/$env:USER/miniconda3/bin/conda") {
-    $env:PATH = "/Users/$env:USER/miniconda3/bin:" + $env:PATH
-}
-
 # FNM
 if (Get-Command fnm -ErrorAction SilentlyContinue) {
   Invoke-Expression (&fnm env --use-on-cd)

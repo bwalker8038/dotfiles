@@ -2,11 +2,6 @@
 
 # macOS-specific environment setup
 
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
 # Deno
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
@@ -31,12 +26,6 @@ alias love="/Applications/love.app/Contents/MacOS/love"
 # Rust/Cargo
 source "$HOME/.cargo/env"
 
-# Flutter
-export PATH="$PATH:$HOME/.lib/flutter/bin"
-
-# Android Cmdline Tools
-export PATH="$PATH:$HOME/.lib/cmdline-tools/bin"
-
 # Rover
 export PATH="$PATH:$HOME/.rover/bin"
 
@@ -57,10 +46,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Swift toolchain
 export PATH="/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:$PATH"
-
-# Codeium
-export PATH="$HOME/.codeium/windsurf/bin:$PATH"
-
 
 # FNM (Fast Node Manager)
 if command -v fnm &> /dev/null; then

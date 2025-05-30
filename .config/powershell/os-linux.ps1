@@ -11,12 +11,6 @@ $env:PATH += ":$HOME/.rover/bin"
 $env:PATH += ":$HOME/.lib/flutter/bin"
 $env:PATH += ":$HOME/.lib/cmdline-tools/bin"
 
-# NVM
-$nvmScript = "$HOME/.nvm/nvm.sh"
-if (Test-Path $nvmScript) {
-    . $nvmScript
-}
-
 # Rust
 $cargoEnv = "$HOME/.cargo/env"
 if (Test-Path $cargoEnv) {
