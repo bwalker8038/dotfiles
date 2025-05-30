@@ -28,17 +28,17 @@ function Link-Config {
 }
 
 # --- Symlinks ---
-$home = $env:USERPROFILE
+$userHome = $env:USERPROFILE
 Log "Linking config files..."
 
-Link-Config "$home\dotfiles\.config\starship.toml" "$home\.config\starship.toml"
-Link-Config "$home\dotfiles\.config\powershell\Microsoft.PowerShell_profile.ps1" "$home\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
+Link-Config "$userHome\dotfiles\.config\starship.toml" "$home\.config\starship.toml"
+Link-Config "$userHome\dotfiles\.config\powershell\Microsoft.PowerShell_profile.ps1" "$home\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
 
 # Optional: if using WSL or Git Bash and want zsh compatibility
-# Link-Config "$home\dotfiles\.config\zsh\.zshrc" "$home\.zshrc"
+# Link-Config "$userHome\dotfiles\.config\zsh\.zshrc" "$home\.zshrc"
 
 # --- TPM ---
-$tpmPath = "$home\.tmux\plugins\tpm"
+$tpmPath = "$userHome\.tmux\plugins\tpm"
 if (-Not (Test-Path $tpmPath)) {
   Log "Cloning TPM..."
   git clone https://github.com/tmux-plugins/tpm $tpmPath
@@ -55,7 +55,7 @@ if (-Not (Get-Command fnm -ErrorAction SilentlyContinue)) {
 }
 
 # --- asdf (Windows via WSL is best) ---
-if (-Not (Test-Path "$home\.asdf")) {
+if (-Not (Test-Path "$userHome\.asdf")) {
   Log "asdf not installed. Note: Windows support is limited. Recommend using WSL for full functionality."
 }
 
