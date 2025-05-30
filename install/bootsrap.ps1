@@ -40,5 +40,23 @@ Link-Config "$home\dotfiles\.config\powershell\Microsoft.PowerShell_profile.ps1"
 # --- TPM ---
 $tpmPath = "$home\.tmux\plugins\tpm"
 if (-Not (Test-Path $tpmPath)) {
-  Log "Cloning TPM...
+  Log "Cloning TPM..."
+  git clone https://github.com/tmux-plugins/tpm $tpmPath
+} else {
+  Log "TPM already installed."
+}
 
+# --- fnm ---
+if (-Not (Get-Command fnm -ErrorAction SilentlyContinue)) {
+  Log "Installing fnm..."
+  Invoke-Expression (Invoke-RestMethod -Uri "https://fnm.vercel.app/install.ps1")
+} else {
+  Log "fnm already installed."
+}
+
+# --- asdf (Windows via WSL is best) ---
+if (-Not (Test-Path "$home\.asdf")) {
+  Log "asdf not installed. Note: Windows support is limited. Recommend using WSL for full functionality."
+}
+
+Log "Bootstrap complete! Restart PowerShell to apply."
