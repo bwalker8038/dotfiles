@@ -46,10 +46,11 @@ if (-Not (Test-Path $tpmPath)) {
   Log "TPM already installed."
 }
 
+
 # --- fnm ---
-if (-Not (Get-Command fnm -ErrorAction SilentlyContinue)) {
-  Log "Installing fnm..."
-  Invoke-Expression (Invoke-RestMethod -Uri "https://fnm.vercel.app/install.ps1")
+if (-not (Get-Command fnm -ErrorAction SilentlyContinue)) {
+  Log "Installing fnm via winget..."
+  winget install Schniz.fnm --accept-package-agreements --accept-source-agreements
 } else {
   Log "fnm already installed."
 }
