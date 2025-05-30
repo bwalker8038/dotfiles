@@ -28,7 +28,8 @@ discharging_symbol = "⚡"
 
 [time]
 disabled = false
-format = "at [\[$time\]](dimmed blue) "
+format = """at [[$time]](dimmed blue) """
+
 
 [aws]
 disabled = false
