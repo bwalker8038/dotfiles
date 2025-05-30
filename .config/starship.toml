@@ -1,0 +1,41 @@
+# ~/.config/starship.toml
+
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = "$all"
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+
+[directory]
+truncation_length = 3
+truncate_to_repo = false
+
+[git_branch]
+symbol = "🌱 "
+
+[package]
+disabled = true
+
+[cmd_duration]
+disabled = false
+
+[battery]
+disabled = false
+full_symbol = "🔋 "
+discharging_symbol = "⚡"
+
+[time]
+disabled = false
+format = "at [\[$time\]](dimmed blue) "
+
+[aws]
+disabled = false
+format = "on [$profile](bold yellow)"
+
+[hostname]
+disabled = false
+format = "[$hostname](bold dimmed white) "
+ssh_only = false
+
