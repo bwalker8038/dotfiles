@@ -26,11 +26,6 @@ disabled = false
 full_symbol = "🔋 "
 discharging_symbol = "⚡"
 
-[time]
-disabled = false
-format = """at [[$time]](dimmed blue) """
-
-
 [aws]
 disabled = false
 format = "on [$profile](bold yellow)"
