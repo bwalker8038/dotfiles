@@ -1,7 +1,36 @@
-# ~/.config/powershell/os-macos.ps1
+# --- Helpers ---
+function Log($msg) {
+  Write-Host "[init] $msg" -ForegroundColor Gray
+}
 
-# macOS-specific environment setup
+function Test-HasXcodeCLI {
+  Test-Path "/Library/Developer/CommandLineTools/usr/bin/git"
+}
 
+function Safe-Source-Shim {
+  param (
+    [string]$Name,
+    [string]$Path
+  )
+
+  if ((Test-Path $Path) -and (Test-HasXcodeCLI)) {
+    Log "Setting up $Name shims (PowerShell-safe)"
+    switch ($Name) {
+      "asdf" {
+        $env:ASDF_DIR = "$HOME/.asdf"
+        $env:PATH = "$env:ASDF_DIR/shims:$env:PATH"
+      }
+      "wasmer" {
+        $env:PATH = "$HOME/.wasmer/bin:$env:PATH"
+      }
+    }
+  }
+  else {
+    Log "Skipping $Name (not available or Xcode CLI missing)"
+  }
+}
+
+# --- Core environment ---
 $env:EDITOR = "nvim"
 $env:GOPATH = "$HOME/go"
 $env:GOTOOT = "$(brew --prefix golang)/libexec"
@@ -15,23 +44,24 @@ $env:PATH += ":$HOME/.lib/cmdline-tools/bin"
 $env:PATH += ":$HOME/.rover/bin"
 $env:PATH += ":$HOME/.local/bin"
 
-# Chrome Dev
+# --- Chrome Dev ---
 $env:CHROME_EXECUTABLE = "/Applications/Google Chrome Dev.app/Contents/MacOS/Google Chrome Dev"
 
-# Wasmer
-$wasmerScript = "$HOME/.wasmer/wasmer.sh"
-if (Test-Path $wasmerScript) {
-    . $wasmerScript
+# --- Starship ---
+if (Get-Command starship -ErrorAction SilentlyContinue) {
+  Invoke-Expression (&starship init powershell | Out-String)
 }
 
-# FNM
+# --- Zoxide ---
+if (Get-Command zoxide -ErrorAction SilentlyContinue) {
+  Invoke-Expression (&zoxide init powershell | Out-String)
+}
+
+# --- FNM ---
 if (Get-Command fnm -ErrorAction SilentlyContinue) {
-  Invoke-Expression (&fnm env --use-on-cd)
+  Invoke-Expression (&fnm env --use-on-cd --shell=powershell | Out-String)
 }
 
-# ASDF
-$asdfScript = "$HOME/.asdf/asdf.sh"
-if (Test-Path $asdfScript) {
-  . $asdfScript
-}
-
+# --- asdf and wasmer (Bash-only setup guarded) ---
+Safe-Source-Shim "asdf" "$HOME/.asdf/asdf.sh"
+Safe-Source-Shim "wasmer" "$HOME/.wasmer/wasmer.sh"

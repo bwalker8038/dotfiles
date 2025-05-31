@@ -2,6 +2,9 @@
 
 # macOS-specific environment setup
 
+# Macos toolchain
+export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
+
 # Deno
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
