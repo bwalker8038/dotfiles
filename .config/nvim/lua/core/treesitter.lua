@@ -12,7 +12,8 @@ require("nvim-treesitter.configs").setup {
     "python",
     "graphql",
     "astro",
-    "tsx"
+    "tsx",
+    "json"
   },
   highlight = {
     enable = true,
