@@ -14,6 +14,7 @@ truncate_to_repo = false
 
 [git_branch]
 symbol = "🌱 "
+truncation_length = 4
 
 [package]
 disabled = true
@@ -24,7 +25,25 @@ disabled = false
 [battery]
 disabled = false
 full_symbol = "🔋 "
-discharging_symbol = "⚡"
+discharging_symbol = "🪫 "
+charging_symbol = "⚡️ "
+empty_symbol = "💀 "
+
+[[battery.display]]
+threshold = 10
+style = "bold red"
+discharging_symbol = "🪫"
+
+[[battery.display]]
+threshold = 30
+style = "bold yellow"
+discharging_symbol = "🪫 "
+
+[time]
+disabled = false
+
+[ruby]
+disabled = true
 
 [aws]
 disabled = false
