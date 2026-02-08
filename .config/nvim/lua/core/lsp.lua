@@ -46,7 +46,10 @@ end
 -- null-ls setup
 local null_ok, null_ls = pcall(require, "null-ls")
 if null_ok then
-    local sources = {null_ls.builtins.formatting.prettier}
+    local sources = {
+      null_ls.builtins.formatting.prettier,
+      null_ls.builtins.formatting.gofmt,
+    }
 
     local has_config_file = function(utils)
         return utils.root_has_file({"eslint.config.js", "eslint.config.mjs", ".eslintrc.js", ".eslintrc.json",

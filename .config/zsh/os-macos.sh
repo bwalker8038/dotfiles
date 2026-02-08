@@ -6,11 +6,11 @@
 export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
 
 # Deno
-export DENO_INSTALL="$HOME/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
+# export DENO_INSTALL="$HOME/.deno"
+# export PATH="$DENO_INSTALL/bin:$PATH"
 
 # RVM
-export PATH="$PATH:$HOME/.rvm/bin"
+# export PATH="$PATH:$HOME/.rvm/bin"
 
 # Go
 export GOPATH="$HOME/go"
@@ -43,9 +43,9 @@ export WASMER_DIR="$HOME/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
 
 # Bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-[ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
+# export BUN_INSTALL="$HOME/.bun"
+# export PATH="$BUN_INSTALL/bin:$PATH"
+# [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
 
 # Swift toolchain
 export PATH="/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:$PATH"
@@ -56,9 +56,10 @@ if command -v fnm &> /dev/null; then
 fi
 
 # ASDF Version Manager
-if [ -f "$HOME/.asdf/asdf.sh" ]; then
-  . "$HOME/.asdf/asdf.sh"
-fi
+# export PATH="$HOME/.asdf/bin:$PATH"
+#if [ -f "$HOME/.asdf/asdf.sh" ]; then
+#  . "$HOME/.asdf/asdf.sh"
+#fi
 
 if [ -f "$HOME/.asdf/completions/asdf.bash" ]; then
   . "$HOME/.asdf/completions/asdf.bash"

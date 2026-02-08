@@ -34,7 +34,10 @@ return { -- Theme
 }, -- File explorer
 {
     "nvim-tree/nvim-tree.lua",
-    dependencies = {"nvim-tree/nvim-web-devicons"}
+    dependencies = {"nvim-tree/nvim-web-devicons"},
+    config = function()
+      require("nvim-tree").setup({})
+    end
 }, -- Git
 "tpope/vim-fugitive", {"lewis6991/gitsigns.nvim"}, -- Fuzzy finder
 {
@@ -75,12 +78,13 @@ return { -- Theme
     dependencies = {"nvimtools/none-ls-extras.nvim"},
     config = function()
         local null_ls = require("null-ls")
-        local sources = {null_ls.builtins.formatting.prettier}
+        local sources = { null_ls.builtins.formatting.gofmt}
+        -- local sources = {null_ls.builtins.formatting.prettier, null_ls.builtins.formatting.gofmt}
 
-        local has_eslint_d = vim.fn.executable("eslint_d") == 1
-        if has_eslint_d then
-            table.insert(sources, require("none-ls.diagnostics.eslint_d"))
-        end
+        -- local has_eslint_d = vim.fn.executable("eslint_d") == 1
+        -- if has_eslint_d then
+        --    table.insert(sources, require("none-ls.diagnostics.eslint_d"))
+        -- end
 
         null_ls.setup({
             sources = sources
@@ -136,6 +140,17 @@ return { -- Theme
             }
         })
     end
+}, -- prettier, formatters
+{
+  "sbdchd/neoformat",
+  config = function()
+      vim.api.nvim_create_autocmd("BufWritePre", {
+          pattern = {"*.js", "*.ts", "*.jsx", "*.tsx", "*.css", "*.scss", "*.html", "*.json", "*.md", "*.go", "*.py"},
+          callback = function()
+              vim.cmd("Neoformat")
+          end
+      })
+  end
 }, -- Copilot
 {
     "zbirenbaum/copilot.lua",

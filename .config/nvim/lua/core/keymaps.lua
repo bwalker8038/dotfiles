@@ -25,6 +25,14 @@ map("n", "<leader>tx", ":tabclose<CR>", opts)
 map("n", "<leader>tn", ":tabn<CR>", opts)
 map("n", "<leader>tp", ":tabp<CR>", opts)
 
+-- Buffers
+map("n", "<leader>bb", ":b#<CR>", opts) -- switch to last buffer
+map("n", "<leader>bd", ":bd<CR>", opts) -- delete current buffer
+map("n", "<leader>bl", ":ls<CR>:b<Space>", { noremap = true }) -- list buffers and prompt to switch
+map("n", "<leader>bn", ":bnext<CR>", opts) -- next buffer
+map("n", "<leader>bp", ":bprevious<CR>", opts) -- previous buffer
+map("n", "<leader>ba", ":%bd|e#|bd#<CR>", opts) -- close all buffers except current
+
 -- File explorer
 map("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 

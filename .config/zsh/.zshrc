@@ -17,3 +17,18 @@ case "$OSTYPE" in
   linux*)   source ~/.config/zsh/os-linux.sh ;;
 esac
 
+
+# pnpm
+export PNPM_HOME="/Users/brad/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# cursor-agent
+export PATH="$HOME/.local/bin:$PATH"
+
+# asdf
+export ASDF_DIR="$HOME/.asdf"
+export PATH="$ASDF_DIR/bin:$ASDF_DIR/shims:$PATH"
