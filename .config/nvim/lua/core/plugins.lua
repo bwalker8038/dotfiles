@@ -60,18 +60,26 @@ return { -- Theme
     dependencies = {"williamboman/mason.nvim"},
     config = function()
         require("mason-lspconfig").setup({
-            ensure_installed = {"ts_ls", "gopls", "lua_ls", "jsonls", "html", "cssls", "pyright"}
+            ensure_installed = {"ts_ls", "gopls", "lua_ls", "jsonls", "html", "cssls", "pyright", "denols"}
         })
 
         local lspconfig = require("lspconfig")
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-        local servers = {"ts_ls", "gopls", "lua_ls", "jsonls", "html", "cssls", "pyright"}
+        local servers = {"ts_ls", "gopls", "lua_ls", "jsonls", "html", "cssls", "pyright", "denols"}
         for _, server in ipairs(servers) do
             lspconfig[server].setup({
                 capabilities = capabilities
             })
+
+            if server == "denols" then
+              lspconfig.denols.setup({
+                  capabilities = capabilities,
+                  root_markers = {"deno.json", "deno.jsonc"},
+              })
+            end
         end
+        -- Deno setup
     end
 }, {"neovim/nvim-lspconfig"}, {
     "nvimtools/none-ls.nvim",
