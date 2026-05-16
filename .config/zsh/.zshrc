@@ -6,7 +6,7 @@ export ZSH="/Users/brad/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
 source $ZSH/oh-my-zsh.sh
-plugins=(git zsh-autosuggestions)
+# plugins=(git zsh-autosuggestions)
 
 # Starship prompt
 eval "$(starship init zsh)"
@@ -32,3 +32,11 @@ export PATH="$HOME/.local/bin:$PATH"
 # asdf
 export ASDF_DIR="$HOME/.asdf"
 export PATH="$ASDF_DIR/bin:$ASDF_DIR/shims:$PATH"
+
+# Edge.js
+export EDGEJS_HOME="/Users/brad/.edgejs"
+export PATH="/Users/brad/.edgejs/bin:$PATH"
+
+# Wasmer
+export WASMER_DIR="/Users/brad/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"

@@ -34,7 +34,13 @@ map("n", "<leader>bp", ":bprevious<CR>", opts) -- previous buffer
 map("n", "<leader>ba", ":%bd|e#|bd#<CR>", opts) -- close all buffers except current
 
 -- File explorer
-map("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+map("n", "<leader>e", ":lua Snacks.picker.explorer()<CR>", opts)
+
+-- Lazygit
+map("n", "<leader>lg", ":lua Snacks.lazygit()<CR>", opts)
+
+-- Terminal
+map("n", "<leader>tt", ":lua Snacks.terminal.toggle()<CR>", opts)
 
 -- Telescope
 map("n", "<leader>ff", ":Telescope find_files<CR>", opts)

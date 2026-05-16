@@ -47,7 +47,7 @@ symlink "$DOTFILES/zsh/.zshrc" "$HOME/.zshrc"
 symlink "$DOTFILES/starship.toml" "$HOME/.config/starship.toml"
 symlink "$DOTFILES/tmux/tmux.conf" "$HOME/.tmux.conf"
 symlink "$DOTFILES/nvim" "$HOME/.config/nvim"
-symlink "$DOTFILES/eslint" "$HOME/.config/eslint"
+# symlink "$DOTFILES/eslint" "$HOME/.config/eslint"
 symlink "$DOTFILES/powershell/Microsoft.PowerShell_profile.ps1" "$HOME/.config/powershell/Microsoft.PowerShell_profile.ps1"
 
 # --- Install oh-my-zsh ---
@@ -102,22 +102,22 @@ else
 fi
 
 # --- Global ESLint Setup ---
-ESLINT_GLOBAL_CONFIG="$HOME/.config/eslint/eslint.config.mjs"
-ESLINT_INSTALL_SCRIPT="$HOME/.config/eslint/install-global-eslint-deps.sh"
-ESLINT_WRAPPER="$HOME/.config/eslint/eslint-global"
+# ESLINT_GLOBAL_CONFIG="$HOME/.config/eslint/eslint.config.mjs"
+# ESLINT_INSTALL_SCRIPT="$HOME/.config/eslint/install-global-eslint-deps.sh"
+# ESLINT_WRAPPER="$HOME/.config/eslint/eslint-global"
 
-if [ -f "$ESLINT_GLOBAL_CONFIG" ]; then
-  if [ -x "$ESLINT_INSTALL_SCRIPT" ]; then
-    log "Installing global ESLint dependencies..."
-    bash "$ESLINT_INSTALL_SCRIPT"
-  else
-    log "Missing install-global-eslint-deps.sh. Skipping install."
-  fi
+# if [ -f "$ESLINT_GLOBAL_CONFIG" ]; then
+#   if [ -x "$ESLINT_INSTALL_SCRIPT" ]; then
+#     log "Installing global ESLint dependencies..."
+#     bash "$ESLINT_INSTALL_SCRIPT"
+#   else
+#     log "Missing install-global-eslint-deps.sh. Skipping install."
+#   fi
 
-  mkdir -p "$BIN_DIR"
-  symlink "$ESLINT_WRAPPER" "$BIN_DIR/eslint-global"
-else
-  log "Missing global eslint.config.mjs. Skipping global ESLint setup."
-fi
+#  mkdir -p "$BIN_DIR"
+#   symlink "$ESLINT_WRAPPER" "$BIN_DIR/eslint-global"
+# else
+#   log "Missing global eslint.config.mjs. Skipping global ESLint setup."
+# fi
 
 log "Bootstrap complete! Reload your shell or start a new session."
